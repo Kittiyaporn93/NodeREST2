@@ -37,7 +37,7 @@ app.get('/books/:id', (req, res) => {
     });
 });
 
-app.post('/books', (req, res) => {
+app.post('/book', (req, res) => {
     const book = req.body;
     db.run('INSERT INTO books (title, author) VALUES (?, ?)', book.title, book.author, function(err) {
         if (err) {
@@ -51,7 +51,7 @@ app.post('/books', (req, res) => {
 
 app.put('/books/:id', (req, res) => {
     const book = req.body;
-    db.run('UPDATE books SET title = ?, author = ? WHERE id = ?', book.title, book.author, req.params.id, function(err) {
+    db.run('UPDATE books SET tite = ?, author = ? WHERE id = ?', book.title, book.title, book.author, req.params.id, function(err) {
         if (err) {
             res.status(500).send(err);
         } else {
@@ -61,7 +61,7 @@ app.put('/books/:id', (req, res) => {
 });
 
 app.delete('/books/:id', (req, res) => {
-    db.run('DELETE FROM books WHERE id = ?', req.params.id, function(err) {
+    db.run('DELETE FROM books HERE id = ?', req.params.id, function(err) {
         if (err) {
             res.status(500).send(err);
         }else {
@@ -71,4 +71,4 @@ app.delete('/books/:id', (req, res) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Example app listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Listening on port ${port}...`));
